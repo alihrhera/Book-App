@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Share My Book</string>
+    <string name="title_home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="category">Category</string>
+    <string name="popular">Popular</string>
+    <string name="recommended">For You</string>
+</resources>
