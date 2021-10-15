@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/kOpenGray"
-    tools:context=".ui.fragment.home.HomeFragment">
+    tools:context=".ui.fragment.favorite.FavoriteFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,15 +23,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-            <com.google.android.material.tabs.TabLayout
+            <LinearLayout
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp"
+                android:gravity="center"
                 android:id="@+id/indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 app:layout_constraintBottom_toBottomOf="@id/sliderView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:tabBackground="@drawable/tab_color_selector" />
-
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:orientation="horizontal" />
 
             <ProgressBar
                 android:id="@+id/slider_loader"
@@ -69,6 +72,8 @@
                 android:id="@+id/catRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cat_title" />
 
             <ProgressBar

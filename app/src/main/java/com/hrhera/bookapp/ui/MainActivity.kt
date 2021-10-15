@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.hrhera.bookapp.R
 import com.hrhera.bookapp.databinding.ActivityMainBinding
+import com.hrhera.bookapp.ui.fragment.home.FavoriteViewModel
 import com.hrhera.bookapp.ui.fragment.home.HomeViewModel
 import com.hrhera.bookapp.ui.fragment.profile.ProfileViewModel
 import com.hrhera.bookapp.util.Status
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     val homeViewModel: HomeViewModel by viewModels()
     val profileViewModel: ProfileViewModel by viewModels()
+    val favoriteViewModel: FavoriteViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,8 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home_graph,
-                R.id.navigation_profile_graph,
+                R.id.homeFragment,
+                R.id.navigation_profile,
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                     runOnUiThread {
                         navView.visibility = View.VISIBLE
                         supportActionBar?.show()
-                        navController.navigate(R.id.navigation_home_graph)
+                        navController.navigate(R.id.homeFragment)
 
                     }
                 } catch (e: Exception) {
@@ -62,6 +64,8 @@ class MainActivity : AppCompatActivity() {
             }
         }.start()
 
+
+        homeViewModel.getSliderData()
 
     }
 }

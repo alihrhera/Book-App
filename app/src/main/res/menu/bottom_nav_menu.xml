@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
@@ -13,7 +13,7 @@
        />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_profile"
         android:icon="@android:drawable/ic_menu_day"
         android:title="@string/profile" />
 

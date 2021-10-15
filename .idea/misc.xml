@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.13333333333333333" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.19010416666666666" />
         <entry key="app/src/main/res/drawable/all_curve.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/bottom,_curve.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/bottom_curve.xml" value="0.13333333333333333" />
@@ -15,9 +16,15 @@
         <entry key="app/src/main/res/drawable/top_curve.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1983695652173913" />
         <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.2703804347826087" />
+        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.2703804347826087" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.2703804347826087" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.16" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/row_book_grid.xml" value="0.2703804347826087" />
+        <entry key="app/src/main/res/layout/row_book_list.xml" value="0.2703804347826087" />
+        <entry key="app/src/main/res/layout/row_slide.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.14" />
       </map>
     </option>
