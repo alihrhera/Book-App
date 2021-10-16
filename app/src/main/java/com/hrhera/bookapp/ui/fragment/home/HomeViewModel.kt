@@ -7,14 +7,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hrhera.bookapp.data.models.BookCategory
 import com.hrhera.bookapp.data.models.OneBook
-import com.hrhera.bookapp.data.models.User
-import java.util.*
+import com.hrhera.bookapp.data.local.ripo.CategoryRepository
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val repository    : CategoryRepository = CategoryRepository(application)
+    var categoryMuLiveDataIcon: LiveData<List<BookCategory>> = repository.getAllBookCategoryICon()
+
+
+
+
+
+
     private val sliderMuLiveData = MutableLiveData<List<OneBook>>()
     private val popularMuLiveData = MutableLiveData<List<OneBook>>()
     private val recommendedMuLiveData = MutableLiveData<List<OneBook>>()
-    private val categoryMuLiveData = MutableLiveData<List<BookCategory>>()
 
     public fun sliderLiveData(): LiveData<List<OneBook>> {
         return sliderMuLiveData
@@ -30,9 +37,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
 
-    public fun categoryLiveData(): LiveData<List<BookCategory>> {
-        return categoryMuLiveData
-    }
 
 
     fun getSliderData() {
@@ -55,8 +59,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun getCategoryData() {
 
-    }
+
 
 }

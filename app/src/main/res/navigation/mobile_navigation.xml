@@ -10,14 +10,33 @@
         android:id="@+id/navigation_profile"
         android:name="com.hrhera.bookapp.ui.fragment.profile.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.hrhera.bookapp.ui.fragment.SplashFragment"
-        android:label="fragment_splash"
+        android:label="@string/splash"
         tools:layout="@layout/fragment_splash" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.hrhera.bookapp.ui.fragment.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.hrhera.bookapp.ui.fragment.favorite.FavoriteFragment"
+        android:label="@string/favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.hrhera.bookapp.ui.fragment.login.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+
+        android:id="@+id/signUpFragment"
+        android:name="com.hrhera.bookapp.ui.fragment.signup.SignUpFragment"
+        android:label="@string/signup"
+        tools:layout="@layout/fragment_sign_up" />
+
+
 </navigation>

@@ -20,11 +20,6 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater)
         model = (requireActivity() as MainActivity).profileViewModel
 
-
-
-
-
-
         return bind.root
 
     }

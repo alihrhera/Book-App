@@ -5,4 +5,14 @@
     <string name="category">Category</string>
     <string name="popular">Popular</string>
     <string name="recommended">For You</string>
+    <string name="login">Login</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="new_user">New User ?</string>
+    <string name="signup">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="favorite">Favorite</string>
+    <string name="splash">Splash</string>
+    <string name="home">Home</string>
+    <string name="agree">By Check You agree to the terms and conditions</string>
 </resources>

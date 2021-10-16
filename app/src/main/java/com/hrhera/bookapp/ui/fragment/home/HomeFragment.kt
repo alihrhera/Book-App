@@ -1,7 +1,6 @@
 package com.hrhera.bookapp.ui.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,6 +27,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater)
+        (requireActivity() as MainActivity).navView?.visibility = View.VISIBLE
         model = (requireActivity() as MainActivity).homeViewModel
 
         val popularAdapter = BookAdapter()
@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
 
         val sliderAdapter = SliderAdapter()
         bind.sliderView.adapter = sliderAdapter
-//        bind.indicator.setupWithViewPager(bind.sliderView, true)
+
         bind.sliderView.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,
@@ -71,6 +71,7 @@ class HomeFragment : Fragment() {
         }
         )
 
+        bind.sliderView.currentItem = 0
         model.popularLiveData().observe(viewLifecycleOwner, {
             bind.popLoader.visibility = View.VISIBLE
             if (it.isEmpty()) {
@@ -90,7 +91,7 @@ class HomeFragment : Fragment() {
             recommendedAdapter.submitList(it)
         })
 
-        model.categoryLiveData().observe(viewLifecycleOwner, {
+        model.categoryMuLiveDataIcon.observe(viewLifecycleOwner, {
             bind.catLoader.visibility = View.VISIBLE
             if (it.isEmpty()) {
                 return@observe
@@ -121,6 +122,7 @@ class HomeFragment : Fragment() {
     }
 
     private val dataList = mutableListOf<String>()
+    private val listOfDots = mutableListOf<ImageView>()
 
     private fun setIndicatorBack(pos: Int) {
         for ((i, x) in listOfDots.withIndex()) {
@@ -131,13 +133,16 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private val listOfDots = mutableListOf<ImageView>()
     private fun createIndicator() {
+        listOfDots.clear()
         for (i in 0 until dataList.size) {
             val dot = ImageView(requireContext())
             listOfDots.add(dot)
             dot.setImageResource(R.drawable.non_selected_tap)
             bind.indicator.addView(dot)
+        }
+        if (listOfDots.isNotEmpty()) {
+            listOfDots[0].setImageResource(R.drawable.selected_tap)
         }
     }
 
