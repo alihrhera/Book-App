@@ -3,23 +3,20 @@ package com.hrhera.bookapp.data.callbacks
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.hrhera.bookapp.data.models.OneBook
+import com.hrhera.bookapp.data.models.OfflineBook
 
 @Dao
 interface BookDao {
-    @Insert
-    // insert message to database
-    fun insert(book: OneBook)
-    @Delete    // delete single message
-    fun delete(book: OneBook)
+    @Insert     // insert message to database
+    fun insert(book: OfflineBook)
 
+    @Query("Delete from OfflineBook Where id=:bookId ")
+    fun delete(bookId:String )
 
-    // get all app message from database witch type = message
-//    @get:Query("Select * from OneBook ")
-//    val allStory: LiveData<List<OneBook>>
+    @get:Query("Select * from OfflineBook ")
+    val allBooks: LiveData<List<OfflineBook>>
 
 
 

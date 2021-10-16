@@ -1,8 +1,14 @@
 package com.hrhera.bookapp.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import com.google.firebase.database.FirebaseDatabase
 import com.hrhera.bookapp.R
+import com.google.firebase.firestore.FirebaseFirestore
+
+
+
 
 const val USER_NAME = "Name"
 const val USER_ID = "ID"
@@ -12,6 +18,9 @@ const val USER_INTERESTS = "Interests"
 const val FIRST_TIME = "FirstTime"
 
 object Statics {
+    val fireBaseDataBase= FirebaseDatabase.getInstance()
+    @SuppressLint("StaticFieldLeak")
+    val fireBaseFirestore = FirebaseFirestore.getInstance()
     val icons = mutableMapOf<String, Int>()
     init {
         icons["Love"] = R.drawable.ic_love

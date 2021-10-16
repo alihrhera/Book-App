@@ -37,6 +37,11 @@
         android:name="com.hrhera.bookapp.ui.fragment.signup.SignUpFragment"
         android:label="@string/signup"
         tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/showBookFragment"
+        android:name="com.hrhera.bookapp.ui.fragment.show_book.ShowBookFragment"
+        android:label="ShowBookFragment"
+        tools:layout="@layout/fragment_book_info" />
 
 
 </navigation>

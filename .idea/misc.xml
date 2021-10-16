@@ -16,15 +16,19 @@
         <entry key="app/src/main/res/drawable/ic_history.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/drawable/ic_horr.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.13333333333333333" />
+        <entry key="app/src/main/res/drawable/ic_like_it.xml" value="0.31574074074074077" />
+        <entry key="app/src/main/res/drawable/ic_liked.xml" value="0.31574074074074077" />
         <entry key="app/src/main/res/drawable/ic_liter.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/drawable/ic_love.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/drawable/ic_mistry.xml" value="0.2675925925925926" />
+        <entry key="app/src/main/res/drawable/ic_star.xml" value="0.31574074074074077" />
         <entry key="app/src/main/res/drawable/non_selected_tap.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/selected_tap.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/tab_color_selector.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/top_curve.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1983695652173913" />
         <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_book_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.2703804347826087" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.2703804347826087" />

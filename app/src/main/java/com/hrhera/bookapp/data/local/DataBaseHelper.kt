@@ -8,14 +8,15 @@ import androidx.room.RoomDatabase
 import com.hrhera.bookapp.data.callbacks.BookDao
 import com.hrhera.bookapp.data.callbacks.CategoryDao
 import com.hrhera.bookapp.data.models.BookCategory
+import com.hrhera.bookapp.data.models.OfflineBook
 import com.hrhera.bookapp.data.models.OneBook
 
 
-@Database(entities = [BookCategory::class], version = 1)
+@Database(entities = [BookCategory::class,OfflineBook::class], version = 1)
 abstract class DataBaseHelper : RoomDatabase() {
 
     abstract fun categoryDao(): CategoryDao
-//    abstract fun bookDao(): BookDao
+    abstract fun bookDao(): BookDao
 
     companion object {
         // Singleton prevents multiple instances of database opening at the
@@ -30,7 +31,7 @@ abstract class DataBaseHelper : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     DataBaseHelper::class.java,
-                    "Happiness"
+                    "BookApp"
                 ).build()
                 INSTANCE = instance
                 // return instance

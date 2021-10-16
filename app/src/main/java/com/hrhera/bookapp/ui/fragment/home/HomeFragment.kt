@@ -10,27 +10,42 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.hrhera.bookapp.R
+import com.hrhera.bookapp.data.callbacks.OnItemClick
+import com.hrhera.bookapp.data.models.AppUser
+import com.hrhera.bookapp.data.models.OneBook
 import com.hrhera.bookapp.databinding.FragmentHomeBinding
 import com.hrhera.bookapp.ui.MainActivity
 import com.hrhera.bookapp.ui.adapter.BookAdapter
 import com.hrhera.bookapp.ui.adapter.CategoryAdapter
 import com.hrhera.bookapp.ui.adapter.SliderAdapter
+import com.hrhera.bookapp.util.DataManger
+import com.hrhera.bookapp.util.Statics
+import kotlinx.coroutines.delay
+import java.util.*
 
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val bind get() = _binding!!
     private lateinit var model: HomeViewModel
-
+    private lateinit var mainActivity: MainActivity
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        mainActivity = (requireActivity() as MainActivity)
         _binding = FragmentHomeBinding.inflate(inflater)
-        (requireActivity() as MainActivity).navView?.visibility = View.VISIBLE
-        model = (requireActivity() as MainActivity).homeViewModel
+
+        mainActivity.navView?.visibility = View.VISIBLE
+        model = mainActivity.homeViewModel
 
         val popularAdapter = BookAdapter()
+        popularAdapter.onItemClick = object : OnItemClick {
+            override fun onClick(item: Any) {
+                mainActivity.bookViewModel.setSingleBook(item as OneBook)
+                mainActivity.navController.navigate(R.id.showBookFragment)
+            }
+        }
         bind.popularRecycler.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         bind.popularRecycler.adapter = popularAdapter
@@ -73,12 +88,13 @@ class HomeFragment : Fragment() {
 
         bind.sliderView.currentItem = 0
         model.popularLiveData().observe(viewLifecycleOwner, {
+            val error = (it["error"] as Boolean)
             bind.popLoader.visibility = View.VISIBLE
-            if (it.isEmpty()) {
+            if (it.isEmpty() || error) {
                 return@observe
             }
             bind.popLoader.visibility = View.GONE
-            popularAdapter.submitList(it)
+            popularAdapter.submitList((it["data"] as List<OneBook>))
         })
 
         model.recommendedLiveData().observe(viewLifecycleOwner, {
@@ -98,6 +114,9 @@ class HomeFragment : Fragment() {
             }
             bind.catLoader.visibility = View.GONE
             categoryAdapter.submitList(it)
+            DataManger.listOfBookCategory.clear()
+            DataManger.listOfBookCategory.addAll(it)
+
         })
 
 
@@ -115,6 +134,8 @@ class HomeFragment : Fragment() {
             createIndicator()
             bind.indicator
         })
+
+
 
 
         return bind.root
@@ -145,5 +166,7 @@ class HomeFragment : Fragment() {
             listOfDots[0].setImageResource(R.drawable.selected_tap)
         }
     }
+
+
 
 }
