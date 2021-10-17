@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kOpenGray"
+    tools:context=".ui.fragment.favorite.FavoriteFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/backBnr"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/bottom_curve_back"
+            android:backgroundTint="@color/kPrimaryVariant"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/bookImage"
+            android:layout_width="100dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="?attr/actionBarSize"
+            android:background="@drawable/all_curve"
+            android:backgroundTint="@color/kGray"
+            android:src="@drawable/logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/likeIt" />
+
+        <TextView
+            android:id="@+id/bookName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="?attr/actionBarSize"
+            android:gravity="start|center"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/bookImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bookImage" />
+
+        <TextView
+            android:id="@+id/bookAuthor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="?attr/actionBarSize"
+            android:layout_marginTop="8dp"
+            android:gravity="start|center"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@id/bookImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bookName"
+
+            />
+
+        <TextView
+
+            android:id="@+id/bookRat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="?attr/actionBarSize"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:text="@string/rat"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/kGolden"
+            android:textSize="13sp"
+            app:drawableStartCompat="@drawable/ic_star"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bookAuthor" />
+
+        <ImageView
+            android:id="@+id/likeIt"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:src="@drawable/ic_like_it"
+            android:text="@string/like_it"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:background="@drawable/top_curve"
+            android:backgroundTint="@color/white"
+            android:paddingTop="?attr/actionBarSize"
+            android:paddingBottom="?attr/actionBarSize"
+            app:layout_constraintTop_toBottomOf="@id/bookImage">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/book_description"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/kPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/bookDisc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:text="@string/text_disc"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+            <TextView
+
+                android:id="@+id/bookCommentTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/book_comments"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="@color/kPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/bookDisc"
+
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bookComments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/bookCommentTv" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
