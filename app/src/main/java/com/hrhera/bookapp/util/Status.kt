@@ -1,10 +1,23 @@
 package com.hrhera.bookapp.util
 
+import android.app.AlertDialog
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.hrhera.bookapp.R
+
+
+fun showHint(activity: FragmentActivity, title: String? = "", message: String? = "",onClickListener: DialogInterface.OnClickListener?) {
+    AlertDialog.Builder(activity)
+        .setTitle(title ?: "Hint")
+        .setMessage(message ?: "Message")
+        .setPositiveButton(android.R.string.ok, onClickListener)
+        .show()
+}
+
 
 object Status {
     private var loading: Dialog? = null

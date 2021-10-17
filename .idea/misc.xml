@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/all_curve.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/bottom,_curve.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/bottom_curve.xml" value="0.13333333333333333" />
+        <entry key="app/src/main/res/drawable/circle.xml" value="0.31203703703703706" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/non_selected_tap.xml" value="0.13333333333333333" />
@@ -14,14 +15,19 @@
         <entry key="app/src/main/res/drawable/tab_color_selector.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/top_curve.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1983695652173913" />
+        <entry key="app/src/main/res/layout/back_ground.xml" value="0.22" />
         <entry key="app/src/main/res/layout/dialog_loading.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_book_info.xml" value="0.12" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.213768115942029" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.1590678824721378" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.16" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.192481884057971" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/row_book_category.xml" value="0.1590678824721378" />
+        <entry key="app/src/main/res/layout/row_book_category_grid.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/row_book_grid.xml" value="0.1590678824721378" />
         <entry key="app/src/main/res/layout/row_comment.xml" value="0.16" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.14" />
       </map>

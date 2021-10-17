@@ -6,6 +6,4 @@
     android:background="@color/kOpenGray"
     tools:context=".ui.fragment.favorite.FavoriteFragment">
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

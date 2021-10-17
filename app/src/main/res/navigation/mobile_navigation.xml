@@ -20,11 +20,7 @@
         android:id="@+id/homeFragment"
         android:name="com.hrhera.bookapp.ui.fragment.home.HomeFragment"
         android:label="@string/home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_self"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.hrhera.bookapp.ui.fragment.favorite.FavoriteFragment"
@@ -46,6 +42,11 @@
         android:name="com.hrhera.bookapp.ui.fragment.show_book.ShowBookFragment"
         android:label="ShowBookFragment"
         tools:layout="@layout/fragment_book_info" />
+    <fragment
+        tools:layout="@layout/fragment_category"
+        android:id="@+id/categoryFragment"
+        android:name="com.hrhera.bookapp.ui.fragment.category.CategoryFragment"
+        android:label="@string/category" />
 
 
 </navigation>

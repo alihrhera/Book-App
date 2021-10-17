@@ -21,8 +21,8 @@ interface CategoryDao {
     fun deleteAll()
 
     // get all app message from database witch type = message
-    @Query("Select * from BookCategory")
-    fun getAllBookCategory(): LiveData<List<BookCategory>>
+    @Query("Select * from BookCategory Where isIcon=:isIcon")
+    fun getAllBookCategory(isIcon: Boolean =false): LiveData<List<BookCategory>>
 
     @Query("Select * from BookCategory Where isIcon=:isIcon")
     fun getAllBookCategoryIcons( isIcon: Boolean =true): LiveData<List<BookCategory>>

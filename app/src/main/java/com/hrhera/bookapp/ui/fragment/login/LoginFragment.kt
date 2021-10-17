@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.hrhera.bookapp.R
 import com.hrhera.bookapp.data.enums.LoginStatus
+import com.hrhera.bookapp.data.models.User
 import com.hrhera.bookapp.databinding.FragmentLoginBinding
 import com.hrhera.bookapp.ui.MainActivity
 import com.hrhera.bookapp.util.Status
@@ -33,7 +34,7 @@ class LoginFragment : Fragment() {
         }
 
         model.loginLiveData().observe(viewLifecycleOwner, {
-            when (it) {
+            when (it["Status"] as LoginStatus) {
                 LoginStatus.LOADING -> {
                     Status.loading()
                 }
@@ -57,6 +58,7 @@ class LoginFragment : Fragment() {
                 LoginStatus.SUCCESS -> {
                     Status.normal()
                     (requireActivity() as MainActivity).navController.navigate(R.id.homeFragment)
+                    (requireActivity() as MainActivity). afterLoginInit(it["data"] as User)
                 }
                 LoginStatus.SOME_ERROR -> {
                     Status.normal()

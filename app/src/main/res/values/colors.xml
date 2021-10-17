@@ -11,6 +11,8 @@
     <color name="kPrimaryVariant">#460457</color>
     <color name="kSecondary">#7A002A</color>
     <color name="kSecondaryVariant">#9E1343</color>
+    <color name="kSecondaryVariantTrans">#564A041D</color>
+
     <color name="white">#FFFFFFFF</color>
     <color name="kOpenGray">#ECE9ED</color>
     <color name="kGray">#8D878F</color>

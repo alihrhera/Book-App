@@ -27,6 +27,47 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:alpha=".1"
+            android:scaleX="2.5"
+            android:scaleY="2.5"
+            android:src="@drawable/ic_buble"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="?attr/actionBarSize"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="?attr/actionBarSize"
+            android:padding="16dp"
+            android:src="@drawable/ic_h_logo"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/gh1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:alpha=".15"
+            android:scaleX="1.25"
+            android:scaleY="1.25"
+            android:src="@drawable/ic_buble"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/loginCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:rotation="180"
+            android:alpha=".15"
+            android:scaleX="1.25"
+            android:scaleY="1.25"
+            android:src="@drawable/ic_buble"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/loginCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -97,7 +138,7 @@
                     android:autofillHints="phone"
                     android:background="@drawable/all_curve"
                     android:backgroundTint="@color/kOpenGray"
-                    android:hint="@string/name"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"

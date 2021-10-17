@@ -1,11 +1,13 @@
 package com.hrhera.bookapp.data.enums
 
-enum class LoginStatus  {
+enum class SignupStatus {
     SUCCESS,
-    PHONE_ERROR,
+    NAME_ERROR,
+    EMAIL_ERROR,
     PASSWORD_ERROR,
     PASSWORD_INVALID,
     PHONE_INVALID,
     SOME_ERROR,
+    ALREADY_USER,
     LOADING
 }

@@ -19,23 +19,23 @@ data class OneBook(
     var likeIt: Int = 0,
     var openTimes: Int = 0,
     var downTimes: Int = 0,
-){
-    fun toMap():Map<String,Any>{
-        val mapOfData= mutableMapOf<String,Any>()
-        mapOfData["id"]=id
-        mapOfData["name"]=name
-        mapOfData["phone"]=phone
-        mapOfData["details"]=details
-        mapOfData["photo"]=photo
-        mapOfData["insertionLong"]=insertionLong
-        mapOfData["likesTime"]=likesTime
-        mapOfData["listOfLikes"]=listOfLikes
-        mapOfData["commentList"]=commentList
-        mapOfData["category"]=category
+) {
+    fun toMap(): Map<String, Any> {
+        val mapOfData = mutableMapOf<String, Any>()
+        mapOfData["id"] = id
+        mapOfData["name"] = name
+        mapOfData["phone"] = phone
+        mapOfData["details"] = details
+        mapOfData["photo"] = photo
+        mapOfData["insertionLong"] = insertionLong
+        mapOfData["likesTime"] = listOfLikes.size
+        mapOfData["listOfLikes"] = listOfLikes
+        mapOfData["commentList"] = commentList
+        mapOfData["category"] = category
 //        mapOfData["user"]=user
-        mapOfData["likeIt"]=likeIt
-        mapOfData["openTimes"]=openTimes
-        mapOfData["downTimes"]=downTimes
+        mapOfData["likeIt"] = likeIt
+        mapOfData["openTimes"] = openTimes
+        mapOfData["downTimes"] = downTimes
         return mapOfData
     }
 }

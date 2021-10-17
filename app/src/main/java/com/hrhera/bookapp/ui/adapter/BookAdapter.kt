@@ -1,5 +1,6 @@
 package com.hrhera.bookapp.ui.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -10,7 +11,7 @@ import com.hrhera.bookapp.data.models.OneBook
 import com.hrhera.bookapp.databinding.RowBookGridBinding
 import com.squareup.picasso.Picasso
 
-class BookAdapter : ListAdapter<OneBook, BookAdapter.BookViewHolder>(
+class BookAdapter() : ListAdapter<OneBook, BookAdapter.BookViewHolder>(
     BookDiffCallback()
 ) {
     lateinit var onItemClick: OnItemClick

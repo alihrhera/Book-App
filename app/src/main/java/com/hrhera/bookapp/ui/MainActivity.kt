@@ -23,6 +23,7 @@ import com.hrhera.bookapp.util.Status
 import kotlinx.coroutines.*
 
 import com.hrhera.bookapp.ui.fragment.show_book.BookViewModel
+import com.hrhera.bookapp.ui.fragment.signup.SignUpViewModel
 import com.hrhera.bookapp.util.Statics.fireBaseDataBase
 
 
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     val favoriteViewModel: FavoriteViewModel by viewModels()
     val categoryViewModel: CategoryViewModel by viewModels()
     val loginViewModel: LoginViewModel by viewModels()
+    val signUpViewModel: SignUpViewModel by viewModels()
     val bookViewModel: BookViewModel by viewModels()
 
     lateinit var navController: NavController
@@ -47,9 +49,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         navView = binding.navView
-
+        bottomNav.visibility = View.GONE
         navController = findNavController(R.id.nav_host_fragment_activity_main)
 
         navController.navigate(R.id.splashFragment)
@@ -67,9 +70,6 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch { switchFromSplashToLogin() }
 
-        homeViewModel.getSliderData()
-        homeViewModel.getPopularData()
-
 
 //        val fireBase=fireBaseDataBase.getReference("Users")
 //        fireBase.child("01061407134").setValue(User("01061407134","Ali Hrhera","01061407134","","1234567"))
@@ -79,18 +79,21 @@ class MainActivity : AppCompatActivity() {
     private suspend fun switchFromSplashToLogin() {
         GlobalScope.launch {
             withContext(Dispatchers.Main) {
-                supportActionBar?.hide()
                 bottomNav.visibility = View.GONE
             }
             delay(3000)
             withContext(Dispatchers.Main) {
-                supportActionBar?.show()
                 navController.navigate(R.id.loginFragment)
             }
         }
     }
 
-
+    fun afterLoginInit(user: User) {
+        homeViewModel.getSliderData()
+        homeViewModel.getPopularData()
+        homeViewModel.getRecommendedData()
+        profileViewModel.setUser(user)
+    }
 
 
 }

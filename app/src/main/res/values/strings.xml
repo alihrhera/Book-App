@@ -30,6 +30,14 @@
     <string name="wrongPassword">Wrong Password</string>
 
     <string name="wrongPhone">Wrong Phone</string>
+    <string name="wrongPhoneSign">Already User Phone</string>
+    <string name="user_interests">User Interests</string>
+    <string name="congratsLogin">Congratulations, you have been added successfully. Please log in to activate the membership. Thank you</string>
+    <string name="congrats">\"Congrats\"</string>
+    <string name="email">Email</string>
+    <string name="invalidName">Please Enter Valid Name</string>
+    <string name="invalidEmail">Please Enter Valid Email</string>
+    <string name="categories">Categories</string>
 
 
 </resources>

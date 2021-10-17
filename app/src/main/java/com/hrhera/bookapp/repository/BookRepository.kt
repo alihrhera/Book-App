@@ -27,6 +27,14 @@ class BookRepository(application: Application) {
         return booksNetworkCall.getAllBooks()
     }
 
+    suspend fun getTrendBooks(): Map<String, Any> {
+        return booksNetworkCall.getTrendBooks()
+    }
+
+    suspend fun getSliderBook(): List<OneBook> {
+        return booksNetworkCall.getSliderBook()
+    }
+
 
     suspend fun updateBook(book: OneBook): UpdateStatus {
         return booksNetworkCall.updateBook(book)

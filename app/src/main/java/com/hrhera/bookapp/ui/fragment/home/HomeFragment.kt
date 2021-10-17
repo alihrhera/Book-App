@@ -1,18 +1,17 @@
 package com.hrhera.bookapp.ui.fragment.home
 
-import android.R.attr
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.hrhera.bookapp.R
 import com.hrhera.bookapp.data.callbacks.OnItemClick
-import com.hrhera.bookapp.data.models.AppUser
 import com.hrhera.bookapp.data.models.OneBook
 import com.hrhera.bookapp.databinding.FragmentHomeBinding
 import com.hrhera.bookapp.ui.MainActivity
@@ -20,13 +19,7 @@ import com.hrhera.bookapp.ui.adapter.BookAdapter
 import com.hrhera.bookapp.ui.adapter.CategoryAdapter
 import com.hrhera.bookapp.ui.adapter.SliderAdapter
 import com.hrhera.bookapp.util.DataManger
-import com.hrhera.bookapp.util.Statics
-import kotlinx.coroutines.delay
 import java.util.*
-import android.R.attr.right
-
-import android.R.attr.left
-import android.widget.LinearLayout
 
 
 class HomeFragment : Fragment() {
@@ -45,12 +38,7 @@ class HomeFragment : Fragment() {
         model = mainActivity.homeViewModel
 
         val popularAdapter = BookAdapter()
-        popularAdapter.onItemClick = object : OnItemClick {
-            override fun onClick(item: Any) {
-                mainActivity.bookViewModel.setSingleBook(item as OneBook)
-                mainActivity.navController.navigate(R.id.showBookFragment)
-            }
-        }
+
         bind.popularRecycler.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         bind.popularRecycler.adapter = popularAdapter
@@ -99,17 +87,45 @@ class HomeFragment : Fragment() {
                 return@observe
             }
             bind.popLoader.visibility = View.GONE
-            popularAdapter.submitList((it["data"] as List<OneBook>))
+            val data = it["data"] as List<*>
+            val dataList = mutableListOf<OneBook>()
+            for (i in data) {
+                if (i is OneBook) {
+                    dataList.add(i)
+                }
+            }
+            popularAdapter.submitList(dataList)
+            popularAdapter.onItemClick = object : OnItemClick {
+                override fun onClick(item: Any) {
+                    mainActivity.bookViewModel.setSingleBook(item as OneBook)
+                    mainActivity.navController.navigate(R.id.showBookFragment)
+                }
+            }
+
         })
 
         model.recommendedLiveData().observe(viewLifecycleOwner, {
-
             bind.recommendedLoader.visibility = View.VISIBLE
-            if (it.isEmpty()) {
+            val error = (it["error"] as Boolean)
+            if (it.isEmpty() || error) {
                 return@observe
             }
             bind.recommendedLoader.visibility = View.GONE
-            recommendedAdapter.submitList(it)
+            val data = it["data"] as List<*>
+            val dataList = mutableListOf<OneBook>()
+            for (i in data) {
+                if (i is OneBook) {
+                    dataList.add(i)
+                }
+            }
+            dataList.shuffle()
+            recommendedAdapter.submitList(dataList)
+            recommendedAdapter.onItemClick = object : OnItemClick {
+                override fun onClick(item: Any) {
+                    mainActivity.bookViewModel.setSingleBook(item as OneBook)
+                    mainActivity.navController.navigate(R.id.showBookFragment)
+                }
+            }
         })
 
         model.categoryMuLiveDataIcon.observe(viewLifecycleOwner, {
@@ -121,7 +137,6 @@ class HomeFragment : Fragment() {
             categoryAdapter.submitList(it)
             DataManger.listOfBookCategory.clear()
             DataManger.listOfBookCategory.addAll(it)
-
         })
 
 
@@ -167,7 +182,7 @@ class HomeFragment : Fragment() {
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            params.setMargins(8,0, 8, 0)
+            params.setMargins(8, 0, 8, 0)
             dot.layoutParams = params
             listOfDots.add(dot)
             dot.setImageResource(R.drawable.non_selected_tap)
@@ -177,7 +192,6 @@ class HomeFragment : Fragment() {
             listOfDots[0].setImageResource(R.drawable.selected_tap)
         }
     }
-
 
 
 }
