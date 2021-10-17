@@ -21,8 +21,6 @@ object AppUser {
         shard.edit().putString(USER_NAME, user.name).apply()
         shard.edit().putString(USER_PHONE, user.phone).apply()
         shard.edit().putString(USER_PHOTO, user.photo).apply()
-        Log.e("TAG", "getPhone: ${user.phone}")
-
         val inter = mutableSetOf<String>()
         for (i in user.setOfInterests) {
             inter.add(i.id)
@@ -38,7 +36,6 @@ object AppUser {
 
     fun getPhone(): String {
         val phone = shard.getString(USER_PHONE, "User Phone") ?: "User Phone"
-        Log.e("TAG", "getPhone: $phone")
         return phone
     }
 
@@ -51,7 +48,6 @@ object AppUser {
         return shard.getString(USER_ID, "User ID") ?: "User ID"
     }
 
-    private
     fun getUser(): User {
         val setOfInterests = mutableSetOf<BookCategory>()
         val userSet = shard.getStringSet(USER_INTERESTS, setOf()) ?: setOf()

@@ -39,21 +39,20 @@ class LoginFragment : Fragment() {
                 }
                 LoginStatus.PASSWORD_INVALID -> {
                     Status.normal()
-                    bind.getPassword.error=""
+                    bind.getPassword.error=getString(R.string.invalidPassword)
                 }
                 LoginStatus.PHONE_INVALID -> {
                     Status.normal()
-                    bind.getPhone.error=""
+                    bind.getPhone.error=getString(R.string.invalidPhone)
 
                 }
                 LoginStatus.PASSWORD_ERROR -> {
                     Status.normal()
-                    bind.getPassword.error="Wrong Password"
-
+                    bind.getPassword.error=getString(R.string.wrongPassword)
                 }
                 LoginStatus.PHONE_ERROR -> {
                     Status.normal()
-                    bind.getPhone.error="No Phone"
+                    bind.getPhone.error=getString(R.string.wrongPhone)
                 }
                 LoginStatus.SUCCESS -> {
                     Status.normal()

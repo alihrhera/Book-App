@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.hrhera.bookapp.data.enums.UpdateStatus
 import com.hrhera.bookapp.data.models.OneBook
-import com.hrhera.bookapp.data.network.BooksNetworkCall
 import com.hrhera.bookapp.repository.BookRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -29,8 +28,11 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
 
 
     fun updateBook(book: OneBook) {
+        updateStatusMutableLiveData.postValue(UpdateStatus.LOADING)
         GlobalScope.launch {
-            bookRepository.updateBook(book)
+            val statues = bookRepository.updateBook(book)
+            updateStatusMutableLiveData.postValue(statues)
+            oneBookMutableLiveData.postValue(book)
         }
     }
 

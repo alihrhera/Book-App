@@ -14,22 +14,37 @@
         <ImageView
             android:id="@+id/backBnr"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="220dp"
             android:background="@drawable/bottom_curve_back"
             android:backgroundTint="@color/kPrimaryVariant"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/backBnr2"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:alpha=".3"
+            android:background="@drawable/ic_a"
+            android:backgroundTint="@color/whiteTrans"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="-56dp" />
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/bookImage"
-            android:layout_width="100dp"
-            android:layout_height="160dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="?attr/actionBarSize"
-            android:background="@drawable/all_curve"
-            android:backgroundTint="@color/kGray"
-            android:src="@drawable/logo"
+            android:layout_marginEnd="32dp"
+            app:cardCornerRadius="24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/likeIt" />
+            app:layout_constraintTop_toBottomOf="@id/likeIt">
+            <ImageView
+                android:id="@+id/bookImageView"
+                android:layout_width="110dp"
+                android:layout_height="160dp"
+                android:src="@drawable/logo" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/bookName"
@@ -83,8 +98,8 @@
             android:id="@+id/likeIt"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_marginEnd="24dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:src="@drawable/ic_like_it"
@@ -117,6 +132,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:textSize="16sp"
                 android:id="@+id/bookDisc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,10 +142,10 @@
                 app:layout_constraintTop_toBottomOf="@id/title" />
 
             <TextView
-
                 android:id="@+id/bookCommentTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:text="@string/book_comments"

@@ -15,5 +15,6 @@
     <color name="kOpenGray">#ECE9ED</color>
     <color name="kGray">#8D878F</color>
     <color name="kGolden">#FFBF00</color>
+    <color name="whiteTrans">#7EFFFFFF</color>
 
 </resources>

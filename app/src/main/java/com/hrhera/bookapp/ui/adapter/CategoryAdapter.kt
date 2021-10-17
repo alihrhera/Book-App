@@ -10,7 +10,6 @@ import com.hrhera.bookapp.data.callbacks.CategoryDiffCallback
 import com.hrhera.bookapp.data.models.BookCategory
 import com.hrhera.bookapp.databinding.RowBookCategoryBinding
 import com.hrhera.bookapp.util.Statics
-import com.squareup.picasso.Picasso
 
 class CategoryAdapter : ListAdapter<BookCategory, CategoryAdapter.CategoryViewHolder>(
     CategoryDiffCallback()

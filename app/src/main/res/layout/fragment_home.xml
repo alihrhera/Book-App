@@ -14,7 +14,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sliderContainer"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:background="@drawable/bottom_curve_back"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -33,7 +33,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="wrap_content"
-                android:layout_height="16dp"
+                android:layout_height="20dp"
                 android:orientation="horizontal" />
 
             <ProgressBar

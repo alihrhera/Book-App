@@ -1,5 +1,6 @@
 package com.hrhera.bookapp.ui.fragment.home
 
+import android.R.attr
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +23,10 @@ import com.hrhera.bookapp.util.DataManger
 import com.hrhera.bookapp.util.Statics
 import kotlinx.coroutines.delay
 import java.util.*
+import android.R.attr.right
+
+import android.R.attr.left
+import android.widget.LinearLayout
 
 
 class HomeFragment : Fragment() {
@@ -158,6 +163,12 @@ class HomeFragment : Fragment() {
         listOfDots.clear()
         for (i in 0 until dataList.size) {
             val dot = ImageView(requireContext())
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(8,0, 8, 0)
+            dot.layoutParams = params
             listOfDots.add(dot)
             dot.setImageResource(R.drawable.non_selected_tap)
             bind.indicator.addView(dot)

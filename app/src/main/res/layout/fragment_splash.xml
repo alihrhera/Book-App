@@ -8,6 +8,39 @@
     tools:context=".ui.fragment.SplashFragment">
 
     <ImageView
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleY="1.8"
+        android:rotation="180"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="200dp"
+        android:scaleX="1.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha=".1"
+        android:src="@drawable/ic_buble" />
+    <ImageView
+        android:layout_marginTop="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:scaleY="1.8"
+        android:scaleX="1.7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha=".05"
+        android:src="@drawable/ic_buble" />
+    <ImageView
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleY="2.8"
+        android:scaleX="2.7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha=".08"
+        android:src="@drawable/ic_buble" />
+
+
+    <ImageView
         android:id="@+id/logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
