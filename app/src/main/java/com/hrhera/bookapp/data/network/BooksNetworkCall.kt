@@ -27,7 +27,7 @@ class BooksNetworkCall {
         delay(1500)
         return fireBaseFirestore.collection("Books")
             .whereGreaterThan("likesTime", 7)
-            .orderBy("likesTime",Query.Direction.DESCENDING)
+            .orderBy("likesTime", Query.Direction.DESCENDING)
             .get().toDeferred()
     }
 
@@ -41,7 +41,6 @@ class BooksNetworkCall {
             OneBook(photo = "https://image.freepik.com/free-vector/geometric-book-cover-flyer-designs-set_1017-18063.jpg"),
         )
     }
-
 
 
     private suspend fun Task<QuerySnapshot>.toDeferred(): Map<String, Any> {
@@ -63,6 +62,14 @@ class BooksNetworkCall {
                 deferred.complete(map)
             }
         }
+        this  .addOnFailureListener { exception ->
+                Log.e("TAG", "get failed with ", exception)
+            map["error"] = true
+            map["error_message"] = "$exception "
+            map["data"] = arrayListOf<OneBook>()
+            deferred.complete(map)
+            }
+
         return deferred.await()
     }
 
@@ -150,4 +157,12 @@ class BooksNetworkCall {
 
     }
 
+
+    suspend fun getCategoryBooks(categoryId: String): Map<String, Any> {
+        delay(500)
+        return fireBaseFirestore.collection("Books")
+            .whereEqualTo("category", categoryId)
+            .orderBy("likesTime", Query.Direction.DESCENDING)
+            .get().toDeferred()
+    }
 }
