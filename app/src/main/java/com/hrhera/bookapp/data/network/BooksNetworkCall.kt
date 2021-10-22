@@ -75,6 +75,13 @@ class BooksNetworkCall {
                 deferred.complete(map)
             }
         }
+        this  .addOnFailureListener { exception ->
+            Log.e("TAG", "get failed with ", exception)
+            map["error"] = true
+            map["error_message"] = "$exception "
+            map["data"] = arrayListOf<OneBook>()
+            deferred.complete(map)
+        }
 
         return deferred.await()
     }
