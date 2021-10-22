@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.hrhera.bookapp.R
+import com.hrhera.bookapp.data.callbacks.OnItemClick
+import com.hrhera.bookapp.data.models.BookCategory
 import com.hrhera.bookapp.databinding.FragmentCategoryBinding
-import com.hrhera.bookapp.databinding.FragmentHomeBinding
 import com.hrhera.bookapp.ui.MainActivity
 import com.hrhera.bookapp.ui.adapter.CategoryGridAdapter
-import com.hrhera.bookapp.ui.fragment.home.FavoriteViewModel
 
 
 class CategoryFragment : Fragment() {
@@ -24,11 +25,23 @@ class CategoryFragment : Fragment() {
     ): View {
         _binding = FragmentCategoryBinding.inflate(inflater)
         model = (requireActivity() as MainActivity).categoryViewModel
+        adapter.onItemClick = object : OnItemClick {
+            override fun onClick(item: Any) {
+                model.setSingleBookCategory(item as BookCategory)
+                (requireActivity() as MainActivity).navController.navigate(R.id.showCategoryBooksFragment)
+            }
+        }
+
+
+        bind.showCate.layoutManager = GridLayoutManager(requireContext(), 2)
+        bind.showCate.adapter = adapter
         model.categoryMuLiveData.observe(viewLifecycleOwner, {
-            bind.showCate.layoutManager = GridLayoutManager(requireContext(), 2)
-            bind.showCate.adapter = adapter
             adapter.submitList(it)
         })
+
+
+
+
         return bind.root
 
     }

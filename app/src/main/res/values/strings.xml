@@ -38,6 +38,7 @@
     <string name="invalidName">Please Enter Valid Name</string>
     <string name="invalidEmail">Please Enter Valid Email</string>
     <string name="categories">Categories</string>
+    <string name="catBooks">Category Books</string>
 
 
 </resources>

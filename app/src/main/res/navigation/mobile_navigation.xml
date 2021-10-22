@@ -47,6 +47,10 @@
         android:id="@+id/categoryFragment"
         android:name="com.hrhera.bookapp.ui.fragment.category.CategoryFragment"
         android:label="@string/category" />
+    <fragment
+        android:id="@+id/showCategoryBooksFragment"
+        android:name="com.hrhera.bookapp.ui.fragment.category.ShowCategoryBooksFragment"
+        android:label="@string/catBooks" />
 
 
 </navigation>

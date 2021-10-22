@@ -13,7 +13,7 @@ class BookRepository(application: Application) {
     private val dataBase = DataBaseHelper.getInstance(application).bookDao()
     var allLikesBook: LiveData<List<OfflineBook>> = dataBase.allBooks
 
-    fun insert(oneBook: OneBook) {
+    suspend fun insert(oneBook: OneBook) {
         val book = OfflineBook(id = oneBook.id, name = oneBook.name)
         dataBase.insert(book)
     }

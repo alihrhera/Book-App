@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.hrhera.bookapp.R
 import com.hrhera.bookapp.data.callbacks.OnItemClick
+import com.hrhera.bookapp.data.models.BookCategory
 import com.hrhera.bookapp.data.models.OneBook
 import com.hrhera.bookapp.databinding.FragmentHomeBinding
 import com.hrhera.bookapp.ui.MainActivity
@@ -23,10 +24,15 @@ import java.util.*
 
 
 class HomeFragment : Fragment() {
+
     private var _binding: FragmentHomeBinding? = null
+
     private val bind get() = _binding!!
+
     private lateinit var model: HomeViewModel
+
     private lateinit var mainActivity: MainActivity
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,49 +43,28 @@ class HomeFragment : Fragment() {
         mainActivity.navView?.visibility = View.VISIBLE
         model = mainActivity.homeViewModel
 
-        val popularAdapter = BookAdapter()
+        initPopular()
 
+        initRecommended()
+
+
+        initCategory()
+
+
+        initSlider()
+
+
+
+
+        return bind.root
+
+    }
+
+    private fun initPopular() {
+        val popularAdapter = BookAdapter()
         bind.popularRecycler.layoutManager =
             LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         bind.popularRecycler.adapter = popularAdapter
-
-        val recommendedAdapter = BookAdapter()
-
-        bind.recommendedRecycler.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        bind.recommendedRecycler.adapter = recommendedAdapter
-
-
-        val categoryAdapter = CategoryAdapter()
-
-        bind.catRecycler.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        bind.catRecycler.adapter = categoryAdapter
-
-
-        val sliderAdapter = SliderAdapter()
-        bind.sliderView.adapter = sliderAdapter
-
-        bind.sliderView.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-                setIndicatorBack(position)
-
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-            }
-        }
-        )
-
-        bind.sliderView.currentItem = 0
         model.popularLiveData().observe(viewLifecycleOwner, {
             val error = (it["error"] as Boolean)
             bind.popLoader.visibility = View.VISIBLE
@@ -103,7 +88,14 @@ class HomeFragment : Fragment() {
             }
 
         })
+    }
 
+    private fun initRecommended() {
+        val recommendedAdapter = BookAdapter()
+
+        bind.recommendedRecycler.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        bind.recommendedRecycler.adapter = recommendedAdapter
         model.recommendedLiveData().observe(viewLifecycleOwner, {
             bind.recommendedLoader.visibility = View.VISIBLE
             val error = (it["error"] as Boolean)
@@ -127,7 +119,14 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+    }
 
+    private fun initCategory() {
+        val categoryAdapter = CategoryAdapter()
+
+        bind.catRecycler.layoutManager =
+            LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        bind.catRecycler.adapter = categoryAdapter
         model.categoryMuLiveDataIcon.observe(viewLifecycleOwner, {
             bind.catLoader.visibility = View.VISIBLE
             if (it.isEmpty()) {
@@ -137,9 +136,40 @@ class HomeFragment : Fragment() {
             categoryAdapter.submitList(it)
             DataManger.listOfBookCategory.clear()
             DataManger.listOfBookCategory.addAll(it)
+            categoryAdapter.onItemClick = object : OnItemClick {
+                override fun onClick(item: Any) {
+                    (requireActivity() as MainActivity).categoryViewModel.setSingleBookCategory(item as BookCategory)
+                    (requireActivity() as MainActivity).navController.navigate(R.id.showCategoryBooksFragment)
+                }
+            }
+
+        })
+    }
+
+
+    private fun initSlider() {
+        val sliderAdapter = SliderAdapter()
+        bind.sliderView.adapter = sliderAdapter
+
+        bind.sliderView.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+
+            }
+
+            override fun onPageSelected(position: Int) {
+                setIndicatorBack(position)
+
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+            }
         })
 
-
+        bind.sliderView.currentItem = 0
         model.sliderLiveData().observe(viewLifecycleOwner, {
             bind.sliderLoader.visibility = View.VISIBLE
             if (it.isEmpty()) {
@@ -154,12 +184,6 @@ class HomeFragment : Fragment() {
             createIndicator()
             bind.indicator
         })
-
-
-
-
-        return bind.root
-
     }
 
     private val dataList = mutableListOf<String>()

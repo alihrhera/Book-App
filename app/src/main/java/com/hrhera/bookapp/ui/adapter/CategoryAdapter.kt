@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hrhera.bookapp.R
 import com.hrhera.bookapp.data.callbacks.CategoryDiffCallback
+import com.hrhera.bookapp.data.callbacks.OnItemClick
 import com.hrhera.bookapp.data.models.BookCategory
 import com.hrhera.bookapp.databinding.RowBookCategoryBinding
 import com.hrhera.bookapp.util.Statics
@@ -14,6 +14,7 @@ import com.hrhera.bookapp.util.Statics
 class CategoryAdapter : ListAdapter<BookCategory, CategoryAdapter.CategoryViewHolder>(
     CategoryDiffCallback()
 ) {
+    lateinit var onItemClick: OnItemClick
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
 
@@ -30,9 +31,12 @@ class CategoryAdapter : ListAdapter<BookCategory, CategoryAdapter.CategoryViewHo
         val item = getItem(position)
         holder.binding.categoryName.text = item.name
 
-        @DrawableRes val icon = Statics.icons[item.photo] ?: 0
+        @DrawableRes val icon = Statics.icons[item.iconName] ?: 0
         holder.binding.icon.setImageResource(icon)
-//        Picasso.get().load(icon).centerCrop().fit().error(R.drawable.logo).into(holder.binding.icon)
+
+        holder.itemView.setOnClickListener {
+            onItemClick.onClick(item)
+        }
     }
 
 

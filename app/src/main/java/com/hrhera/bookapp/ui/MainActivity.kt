@@ -1,6 +1,5 @@
 package com.hrhera.bookapp.ui
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -24,7 +23,6 @@ import kotlinx.coroutines.*
 
 import com.hrhera.bookapp.ui.fragment.show_book.BookViewModel
 import com.hrhera.bookapp.ui.fragment.signup.SignUpViewModel
-import com.hrhera.bookapp.util.Statics.fireBaseDataBase
 
 
 class MainActivity : AppCompatActivity() {
@@ -42,7 +40,6 @@ class MainActivity : AppCompatActivity() {
     var navView: BottomNavigationView? = null
     private val bottomNav get() = navView!!
 
-    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Status.init(this)
@@ -68,11 +65,10 @@ class MainActivity : AppCompatActivity() {
 
         bottomNav.setupWithNavController(navController)
 
-        GlobalScope.launch { switchFromSplashToLogin() }
+        GlobalScope.launch {
+            switchFromSplashToLogin() }
 
 
-//        val fireBase=fireBaseDataBase.getReference("Users")
-//        fireBase.child("01061407134").setValue(User("01061407134","Ali Hrhera","01061407134","","1234567"))
     }
 
 

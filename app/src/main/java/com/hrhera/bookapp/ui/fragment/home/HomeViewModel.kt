@@ -17,12 +17,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val bookRepository: BookRepository = BookRepository(application)
 
 
-    var categoryMuLiveDataIcon: LiveData<List<BookCategory>> = repository.getAllBookCategoryICon()
+    var categoryMuLiveDataIcon: LiveData<List<BookCategory>> = repository.getAllBookCategory()
 
 
     private val sliderMuLiveData = MutableLiveData<List<OneBook>>()
     private val popularMuLiveData = MutableLiveData<Map<String, Any>>()
     private val recommendedMuLiveData = MutableLiveData<Map<String, Any>>()
+
+
 
      fun sliderLiveData(): LiveData<List<OneBook>> {
         return sliderMuLiveData

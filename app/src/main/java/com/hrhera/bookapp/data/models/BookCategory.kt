@@ -7,12 +7,12 @@ import java.util.*
 
 @Entity(tableName = "BookCategory") // room table name  for Message
 data class BookCategory(
-    @Exclude
     @PrimaryKey(autoGenerate = true)
+    @Exclude
     var _id: Int = 0,
     var id: String = "",
     var name: String = "",
     var photo: String = "",
+    var iconName:String="",
     var insertionTime: Long = Calendar.getInstance().timeInMillis,
-    var isIcon: Boolean = false
 )

@@ -20,17 +20,16 @@
             android:background="@drawable/book_category_place_holder"
             android:contentDescription="@string/category"
             android:scaleType="centerCrop"
-            android:src="@color/kSecondaryVariantTrans"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:background="@color/kSecondaryVariantTrans"
             android:id="@+id/categoryName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="@string/category"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
